@@ -1,0 +1,16 @@
+„	defVar --name my_browser --type Browser
+defVar --name page_checker --type Boolean --value False
+defVar --name login_page --type Boolean --value False
+defVar --name login_success --type Boolean --value False
+webStart --name projectx --type "Chrome" my_browser=value
+webNavigate --url "https://web.telegram.org/z/"
+webWaitElement --selector "CssSelector" --css "#auth-qr-form > div > button" --simulatehuman
+webClick --selector "CssSelector" --css "#auth-qr-form > div > button" --simulatehuman
+webSet --value 91<number> --selector "CssSelector" --css "#sign-in-phone-number" --simulatehuman
+webWaitElement --selector "CssSelector" --css "#auth-phone-number-form > div > form > button:nth-child(4) > div" --simulatehuman
+webClick --selector "CssSelector" --css "#auth-phone-number-form > div > form > button:nth-child(4) > div" --simulatehuman
+delay --timeout "00:00:30"
+webWaitElement --selector "CssSelector" --css "#telegram-search-input" --simulatehuman
+webSet --value "minnal murali" --selector "CssSelector" --css "#telegram-search-input" --simulatehuman
+keyboard --type "KeyUp" --key "Return"
+webClose --name projectx --leavebrowseropen*21.0.1.0

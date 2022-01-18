@@ -1,0 +1,28 @@
+µdefVar --name my_browser --type Browser
+defVar --name page_checker --type Boolean --value False
+defVar --name login_page --type Boolean --value False
+defVar --name login_success --type Boolean --value False
+defVar --name bot_lang --type Language
+defVar --name google_speech_engine --type SpeechEngine
+defVar --name language --type Language
+defVar --name ivr --type IvrData
+defVar --name char_bot --type ChatData
+defVar --name new_ivr --type IvrData
+defVar --name clear --type String
+defVar --name iterator --type Numeric --value 0
+webStart --name projectx --type "Chrome" my_browser=value
+webNavigate --url "https://web.telegram.org/"
+webWaitElement --selector "CssSelector" --css "#auth-qr-form > div > button" --simulatehuman 
+webClick --selector "CssSelector" --css "#auth-qr-form > div > button" --simulatehuman 
+webSet --value 917356721627 --selector "CssSelector" --css "#sign-in-phone-number" --simulatehuman 
+webWaitElement --selector "CssSelector" --css "#auth-phone-number-form > div > form > button:nth-child(4) > div" --simulatehuman 
+webClick --selector "CssSelector" --css "#auth-phone-number-form > div > form > button:nth-child(4) > div" --simulatehuman 
+delay --timeout "00:00:15"
+webWaitElement --selector "CssSelector" --css "#telegram-search-input" --simulatehuman 
+webSet --value "demo text" --selector "CssSelector" --css "#telegram-search-input" --simulatehuman 
+while --left "${iterator}" --operator "Less_Than" --right 10
+	keyboard --type "KeyDown" --key "Back"
+	incrementVar --number ${iterator}
+endWhile
+webSet --value "Marakkar | Akhanda Movie" --selector "CssSelector" --css "#telegram-search-input" --simulatehuman 
+webClose --name projectx --leavebrowseropen *21.0.1.0
